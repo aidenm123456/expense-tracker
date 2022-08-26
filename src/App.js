@@ -3,7 +3,7 @@ import { db } from './firebase'
 import { uid } from 'uid';
 import { set, ref, onValue } from 'firebase/database';
 import { useEffect, useState } from 'react';
-import { Typography, Box, InputLabel, MenuItem, FormControl} from '@mui/material';
+import { Typography, Box, InputLabel, MenuItem, FormControl, TextField} from '@mui/material';
 import Select from '@mui/material/Select';
 
 import '@fontsource/roboto/300.css';
@@ -14,10 +14,20 @@ import '@fontsource/roboto/700.css';
 function App() {
 
   const [category, setCategory] = useState('');
+  const [description, setDescription] = useState('');
+  const [date, setDate] = useState('');
 
-  const handleChange = ((e) => {
+  const handleChangeCategory = ((e) => {
     setCategory(e.target.value);
-  }); 
+  });
+  
+  const handleChangeDescription = ((e) => {
+    setDescription(e.target.value);
+  });
+
+  const handleChangeDate = ((e) => {
+    setDate(e.target.value);
+  });
     
   
 
@@ -71,10 +81,11 @@ function App() {
         <Typography variant="h4">Expense Tracking Application</Typography>
       </div>
 
-      <div style={{width: '70vw', backgroundColor:'whitesmoke'}}>
+      <div style={{display:'flex', flexDirection:'column', alignItems:'center', borderRadius:'0.4rem', width: '70vw', backgroundColor:'whitesmoke'}}>
+        
         <Typography variant='body1'>Add Expenses</Typography>
         
-        <Box sx={{ maxWidth: '80%' }}>
+        <Box sx={{ width: '60%' }}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Choose Category</InputLabel>
             <Select
@@ -82,14 +93,34 @@ function App() {
               id="demo-simple-select"
               value={category}
               label="Choose Category"
-              onChange={handleChange}
+              onChange={handleChangeCategory}
             >
               <MenuItem value={'Housing'}>Housing</MenuItem>
               <MenuItem value={'Food'}>Food</MenuItem>
               <MenuItem value={'Transportation'}>Transportation</MenuItem>
+              <MenuItem value={'Health Care'}>Health Care</MenuItem>
+              <MenuItem value={'Insurance'}>Insurance</MenuItem>
+              <MenuItem value={'Phone'}>Phone</MenuItem>
+              <MenuItem value={'Personal Care'}>Personal Care</MenuItem>
+              <MenuItem value={'Entertainment'}>Entertainment</MenuItem>
+              <MenuItem value={'Miscellaneous'}>Miscellaneous</MenuItem>
+              
             </Select>
           </FormControl>
         </Box>
+
+        <div style={{ width:'60%'}}>
+          <Box component="form" sx={{'& > :not(style)': { width: '100%' }}} noValidate autoComplete="off" >
+            <TextField id="outlined-basic" label="Description" variant="outlined" onChange={handleChangeDescription}/>
+          </Box>
+        </div>
+
+        <div style={{ width:'60%'}}>
+          <Box component="form" sx={{'& > :not(style)': { width: '100%' }}} noValidate autoComplete="off" >
+            <TextField id="outlined-basic" label="DD/MM/YY " variant="outlined" onChange={handleChangeDate}/>
+          </Box>
+        </div>
+
       </div>
     </div>
   );
