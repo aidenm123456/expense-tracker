@@ -30,7 +30,7 @@ function App() {
   });
     
   
-
+  // database and local storage
   const [userId, setUserId] = useState(localStorage.getItem('uuid'));
 
   // check for user, and create
@@ -117,7 +117,7 @@ function App() {
 
         <div style={{ width:'60%'}}>
           <Box component="form" sx={{'& > :not(style)': { width: '100%' }}} noValidate autoComplete="off" >
-            <TextField id="outlined-basic" label="DD/MM/YY " variant="outlined" onChange={handleChangeDate}/>
+            <TextField id="outlined-basic" label="YYYY-MM-DD" variant="outlined" onChange={handleChangeDate}/>
           </Box>
         </div>
 
