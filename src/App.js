@@ -19,10 +19,10 @@ function App() {
       set(ref(db, `/${uuid}`), {
         uuid: uuid
       });
-      console.log('userid was just created')
+      // console.log('userid was just created')
     }
     else {
-      console.log('userid already exists')
+      // console.log('userid already exists')
     }
   }
 
