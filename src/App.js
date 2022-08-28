@@ -61,9 +61,18 @@ function App() {
   //write database
   const writeDb = () => {
     const uuid = uid();
-    set(ref(db, `/${uuid}`), {
-      uuid: uuid
+    set(ref(db, `/${uuid}`), 
+    {
+      amount: price,
+      category: category,
+      description: description,
+      date: date 
     });
+    // clear inputs
+    setPrice('');
+    setCategory('');
+    setDescription('');
+    setDate('');
   }
 
   //read database
@@ -141,7 +150,7 @@ function App() {
           </Box>
         </div>
 
-        <Button variant="contained">Add Expense</Button>
+        <Button variant="contained" onClick={() => {writeDb()}}>Add Expense</Button>
 
       </div>
     </div>
