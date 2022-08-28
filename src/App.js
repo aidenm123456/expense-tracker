@@ -83,9 +83,10 @@ function App() {
     onValue(ref(db), snapshot => {
       const data = snapshot.val();
       if(data !== null) {
-        console.log(Object.values(data))
+        // console.log(Object.values(data))
         console.log(Object.values(data)[0])
-        setExpenseData(Object.values(data)[0])
+        console.log(Object.values(Object.values(data)[0]).slice(0,Object.values(Object.values(data)[0]).length -1))
+        setExpenseData(Object.values(Object.values(data)[0]).slice(0,Object.values(Object.values(data)[0]).length -1))
         // console.log(Object.values(Object.values(data)[0])) // drill down version of data
         
         
@@ -178,6 +179,18 @@ function App() {
 
         <Button variant="contained" onClick={() => {updateDb()}}>Add Expense</Button>
 
+      </div>
+
+      <div>
+        <p>Price</p>
+        <p>Category</p>
+        <p>Desciption</p>
+        <p>Date</p>
+        {expenseData.map((expense) => {
+          return(
+            <p>{expense.amount}</p>
+          )
+        })}
       </div>
     </div>
   );
