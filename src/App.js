@@ -97,8 +97,9 @@ function App() {
 
   const updateDb = () => {
 
-    const newEntry = { amount: price, category: category, description: description, date: date }
     const newPostKey = push(child(ref(db), userId)).key;
+    const newEntry = { amount: price, category: category, description: description, date: date, delKey: newPostKey }
+    
 
     let updates = {};
     updates['/' + userId + '/' + newPostKey] = newEntry;
