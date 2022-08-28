@@ -1,7 +1,7 @@
 import './App.css';
 import { db } from './firebase'
 import { uid } from 'uid';
-import { set, ref, onValue } from 'firebase/database';
+import { set, ref, onValue, update, push, child } from 'firebase/database';
 import { useEffect, useState } from 'react';
 import { Typography, Box, InputLabel, MenuItem, FormControl, TextField, OutlinedInput, InputAdornment, Button } from '@mui/material';
 import Select from '@mui/material/Select';
@@ -12,8 +12,10 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 
+
 function App() {
 
+  const [expenseData, setExpenseData] = useState();
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
@@ -77,12 +79,35 @@ function App() {
 
   //read database
   const readDb = () => {
+
     onValue(ref(db), snapshot => {
       const data = snapshot.val();
       if(data !== null) {
         console.log(Object.values(data))
+        console.log(Object.values(data)[0])
+        setExpenseData(Object.values(data)[0])
+        // console.log(Object.values(Object.values(data)[0])) // drill down version of data
+        
+        
+        
+        
       }
     })
+  }
+
+  const updateDb = () => {
+
+    const newEntry = { amount: price, category: category, description: description, date: date }
+    const newPostKey = push(child(ref(db), userId)).key;
+
+    let updates = {};
+    updates['/' + userId + '/' + newPostKey] = newEntry;
+    update(ref(db), updates);
+
+    setPrice('');
+    setCategory('');
+    setDescription('');
+    setDate('');
   }
 
   useEffect(() => {
@@ -150,7 +175,7 @@ function App() {
           </Box>
         </div>
 
-        <Button variant="contained" onClick={() => {writeDb()}}>Add Expense</Button>
+        <Button variant="contained" onClick={() => {updateDb()}}>Add Expense</Button>
 
       </div>
     </div>
