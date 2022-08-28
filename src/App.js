@@ -30,6 +30,7 @@ function App() {
     setDate(e.target.value);
   });
 
+  // this handler updates the price state/input
   const handleChangePrice = ((e) => {
     setPrice(e.target.value);
   });
