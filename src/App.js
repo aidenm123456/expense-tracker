@@ -3,13 +3,14 @@ import { db } from './firebase'
 import { uid } from 'uid';
 import { set, ref, onValue } from 'firebase/database';
 import { useEffect, useState } from 'react';
-import { Typography, Box, InputLabel, MenuItem, FormControl, TextField, OutlinedInput, InputAdornment} from '@mui/material';
+import { Typography, Box, InputLabel, MenuItem, FormControl, TextField, OutlinedInput, InputAdornment, Button } from '@mui/material';
 import Select from '@mui/material/Select';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+
 
 function App() {
 
@@ -139,6 +140,8 @@ function App() {
             <TextField id="outlined-basic" label="YYYY-MM-DD" variant="outlined" value={date} onChange={handleChangeDate}/>
           </Box>
         </div>
+
+        <Button variant="contained">Add Expense</Button>
 
       </div>
     </div>
