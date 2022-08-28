@@ -86,7 +86,14 @@ function App() {
         // console.log(Object.values(data))
         console.log(Object.values(data)[0])
         console.log(Object.values(Object.values(data)[0]).slice(0,Object.values(Object.values(data)[0]).length -1))
-        setExpenseData(Object.values(Object.values(data)[0]).slice(0,Object.values(Object.values(data)[0]).length -1))
+        if(Object.values(Object.values(data)[0]).length > 1) {
+          setExpenseData(Object.values(Object.values(data)[0]).slice(0,Object.values(Object.values(data)[0]).length -1))
+        }
+        else {
+          console.log(Object.values(Object.values(data)[0]))
+          setExpenseData(false)
+        }
+        // setExpenseData(Object.values(Object.values(data)[0]).slice(0,Object.values(Object.values(data)[0]).length))
         // console.log(Object.values(Object.values(data)[0])) // drill down version of data
         
         
@@ -113,7 +120,7 @@ function App() {
   }
 
   const removeDb = (expenseId) => {
-    remove(ref(db), userId + '/' + expenseId);
+    remove(ref(db,'/' + userId + '/' + expenseId));
     readDb();
   }
 
@@ -122,6 +129,9 @@ function App() {
     readDb();
     },[])
   
+  if (expenseData === null) {
+    return(<p>Loading ...</p>)
+  }
 
   return (
     <div className="App" style={{height:'100vh', backgroundColor: 'lightblue', display:'flex', alignItems:'center', flexDirection:'column'}}>
@@ -205,9 +215,9 @@ function App() {
               <Typography style={{ fontWeight: 600 }} variant='body1'>Delete</Typography>
             </div>
           </div>
-          {expenseData !== null ? expenseData.map((expense) => {
+          {expenseData !== false ? expenseData.map((expense) => {
             return(
-              <div style={{display: 'flex'}}>
+              <div key={expense.delKey} style={{display: 'flex'}}>
                 <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
                   <Typography variant='body1'>{ expense.date}</Typography>
                 </div>
@@ -225,7 +235,7 @@ function App() {
                 </div>
               </div>
             )
-          }) : <></> }
+          }) : null} 
         </div>
       </div>
     </div>
