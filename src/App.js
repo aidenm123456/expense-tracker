@@ -1,7 +1,7 @@
 import './App.css';
 import { db } from './firebase'
 import { uid } from 'uid';
-import { set, ref, onValue, update, push, child } from 'firebase/database';
+import { set, ref, onValue, update, push, child, remove } from 'firebase/database';
 import { useEffect, useState } from 'react';
 import { Typography, Box, InputLabel, MenuItem, FormControl, TextField, OutlinedInput, InputAdornment, Button } from '@mui/material';
 import Select from '@mui/material/Select';
@@ -15,7 +15,7 @@ import '@fontsource/roboto/700.css';
 
 function App() {
 
-  const [expenseData, setExpenseData] = useState();
+  const [expenseData, setExpenseData] = useState(null);
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
@@ -112,6 +112,11 @@ function App() {
     setDate('');
   }
 
+  const removeDb = (expenseId) => {
+    remove(ref(db), userId + '/' + expenseId);
+    readDb();
+  }
+
   useEffect(() => {
     checkUser();
     readDb();
@@ -181,16 +186,47 @@ function App() {
 
       </div>
 
-      <div>
-        <p>Price</p>
-        <p>Category</p>
-        <p>Desciption</p>
-        <p>Date</p>
-        {expenseData.map((expense) => {
-          return(
-            <p>{expense.amount}</p>
-          )
-        })}
+      <div style={{display:'flex', width: '80%', alignItems: 'center', justifyContent:'center'}}>
+        <div style={{ width: '100%'}}>
+          <div style={{display: 'flex', marginBottom: '1vh'}}>
+            <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
+              <Typography style={{ fontWeight: 600 }} variant='body1'>Date</Typography>
+            </div>
+            <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
+              <Typography style={{ fontWeight: 600 }} variant='body1'>Price</Typography>
+            </div>
+            <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
+              <Typography style={{ fontWeight: 600 }} variant='body1'>Category</Typography>
+            </div>
+            <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
+              <Typography style={{ fontWeight: 600 }} variant='body1'>Description</Typography>
+            </div>
+            <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
+              <Typography style={{ fontWeight: 600 }} variant='body1'>Delete</Typography>
+            </div>
+          </div>
+          {expenseData !== null ? expenseData.map((expense) => {
+            return(
+              <div style={{display: 'flex'}}>
+                <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
+                  <Typography variant='body1'>{ expense.date}</Typography>
+                </div>
+                <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
+                  <Typography variant='body1'>{'$' + expense.amount}</Typography>
+                </div>
+                <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
+                  <Typography variant='body1'>{expense.category}</Typography>
+                </div>
+                <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
+                  <Typography variant='body1'>{expense.description}</Typography>
+                </div>
+                <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
+                  <Button variant="contained" onClick={() => {removeDb(expense.delKey)}}>Remove</Button>
+                </div>
+              </div>
+            )
+          }) : <></> }
+        </div>
       </div>
     </div>
   );
