@@ -13,6 +13,8 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import AmountInput from './components/AmountInput';
+import CategoryInput from './components/CategoryInput';
+import DescriptionInput from './components/DescriptionInput';
 
 
 
@@ -147,49 +149,13 @@ function App() {
       <div style={{display:'flex', flexDirection:'column', alignItems:'center', borderRadius:'0.4rem', width: '70vw', backgroundColor:'whitesmoke'}}>
         
         <Typography variant='body1'>Add Expenses</Typography>
-        <AmountInput priceValue={price} onUpdate={handleChangePrice} />
-        {/* <FormControl fullWidth sx={{ width: '60%' }}>
-          <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-amount"
-            value={price}
-            onChange={handleChangePrice}
-            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-            label="Amount"
-          />
-        </FormControl> */}
-        
-        
-        
-        <Box sx={{ width: '60%' }}>
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Choose Category</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={category}
-              label="Choose Category"
-              onChange={handleChangeCategory}
-            >
-              <MenuItem value={'Housing'}>Housing</MenuItem>
-              <MenuItem value={'Food'}>Food</MenuItem>
-              <MenuItem value={'Transportation'}>Transportation</MenuItem>
-              <MenuItem value={'Health Care'}>Health Care</MenuItem>
-              <MenuItem value={'Insurance'}>Insurance</MenuItem>
-              <MenuItem value={'Phone'}>Phone</MenuItem>
-              <MenuItem value={'Personal Care'}>Personal Care</MenuItem>
-              <MenuItem value={'Entertainment'}>Entertainment</MenuItem>
-              <MenuItem value={'Miscellaneous'}>Miscellaneous</MenuItem>
-              
-            </Select>
-          </FormControl>
-        </Box>
 
-        <div style={{ width:'60%'}}>
-          <Box component="form" sx={{'& > :not(style)': { width: '100%' }}} noValidate autoComplete="off" >
-            <TextField id="outlined-basic" label="Description" variant="outlined" value={description} onChange={handleChangeDescription}/>
-          </Box>
-        </div>
+        <AmountInput priceValue={price} onUpdate={handleChangePrice} />
+
+        <CategoryInput categoryValue={category} onUpdate={handleChangeCategory} />
+
+        <DescriptionInput descriptionValue={description} onUpdate={handleChangeDescription}/> 
+        
 
         <div style={{ width:'60%'}}>
           <Box component="form" sx={{'& > :not(style)': { width: '100%' }}} noValidate autoComplete="off" >
