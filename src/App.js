@@ -15,6 +15,7 @@ import '@fontsource/roboto/700.css';
 import AmountInput from './components/AmountInput';
 import CategoryInput from './components/CategoryInput';
 import DescriptionInput from './components/DescriptionInput';
+import DateInput from './components/DateInput';
 
 
 
@@ -146,32 +147,23 @@ function App() {
         <Typography variant="h4">Expense Tracking Application</Typography>
       </div>
 
+      {/* Expense Inputs */}
       <div style={{display:'flex', flexDirection:'column', alignItems:'center', borderRadius:'0.4rem', width: '70vw', backgroundColor:'whitesmoke'}}>
         
         <Typography variant='body1'>Add Expenses</Typography>
-
         <AmountInput priceValue={price} onUpdate={handleChangePrice} />
-
         <CategoryInput categoryValue={category} onUpdate={handleChangeCategory} />
-
         <DescriptionInput descriptionValue={description} onUpdate={handleChangeDescription}/> 
-        
-
-        <div style={{ width:'60%'}}>
-          <Box component="form" sx={{'& > :not(style)': { width: '100%' }}} noValidate autoComplete="off" >
-            <TextField id="outlined-basic" label="YYYY-MM-DD" variant="outlined" value={date} onChange={handleChangeDate}/>
-          </Box>
-        </div>
-
+        <DateInput dateValue={date} onUpdate={handleChangeDate} />
         <Button variant="contained" onClick={() => {updateDb()}}>Add Expense</Button>
 
       </div>
 
+      {/* expense list */}
       <div style={{display:'flex', width: '80%', alignItems: 'center', justifyContent:'center'}}>
         <div style={{ width: '100%'}}>
 
           <ExpenseHeading />
-
           {expenseData !== false ? expenseData.map((expense) => {
             return(
               <ExpenseItem 
@@ -186,6 +178,7 @@ function App() {
           }) : null} 
         </div>
       </div>
+
     </div>
   );
 }
