@@ -6,11 +6,13 @@ import { useEffect, useState } from 'react';
 import { Typography, Box, InputLabel, MenuItem, FormControl, TextField, OutlinedInput, InputAdornment, Button } from '@mui/material';
 import Select from '@mui/material/Select';
 import ExpenseItem from './components/ExpenseItem';
+import ExpenseHeading from './components/ExpenseHeading';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+
 
 
 
@@ -200,44 +202,18 @@ function App() {
       <div style={{display:'flex', width: '80%', alignItems: 'center', justifyContent:'center'}}>
         <div style={{ width: '100%'}}>
 
-          <div style={{display: 'flex', marginBottom: '1vh'}}>
-            <div style={{width:'15%', display:'flex', justifyContent:'center', alignItems:'center'}}>
-              <Typography style={{ fontWeight: 600 }} variant='body1'>Date</Typography>
-            </div>
-            <div style={{width:'15%', display:'flex', justifyContent:'center', alignItems:'center'}}>
-              <Typography style={{ fontWeight: 600 }} variant='body1'>Price</Typography>
-            </div>
-            <div style={{width:'15%', display:'flex', justifyContent:'center', alignItems:'center'}}>
-              <Typography style={{ fontWeight: 600 }} variant='body1'>Category</Typography>
-            </div>
-            <div style={{width:'35%', display:'flex', justifyContent:'center', alignItems:'center'}}>
-              <Typography style={{ fontWeight: 600 }} variant='body1'>Description</Typography>
-            </div>
-            <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
-              <Typography style={{ fontWeight: 600 }} variant='body1'>Delete</Typography>
-            </div>
-          </div>
+          <ExpenseHeading />
+
           {expenseData !== false ? expenseData.map((expense) => {
             return(
-
-              <ExpenseItem key={expense.delKey} expenseDate={expense.date} expenseAmount={expense.amount} expenseCategory={expense.category} expenseDesc={expense.description} onRemove={() => {removeDb(expense.delKey)}}/>
-              // <div key={expense.delKey} style={{display: 'flex'}}>
-              //   <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
-              //     <Typography variant='body1'>{ expense.date}</Typography>
-              //   </div>
-              //   <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
-              //     <Typography variant='body1'>{'$' + expense.amount}</Typography>
-              //   </div>
-              //   <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
-              //     <Typography variant='body1'>{expense.category}</Typography>
-              //   </div>
-              //   <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
-              //     <Typography variant='body1'>{expense.description}</Typography>
-              //   </div>
-              //   <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
-              //     <Button variant="contained" onClick={() => {removeDb(expense.delKey)}}>Remove</Button>
-              //   </div>
-              // </div>
+              <ExpenseItem 
+                key={expense.delKey} 
+                expenseDate={expense.date} 
+                expenseAmount={expense.amount} 
+                expenseCategory={expense.category} 
+                expenseDesc={expense.description} 
+                onRemove={() => {removeDb(expense.delKey)}}
+              />
             )
           }) : null} 
         </div>
