@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 
 const ExpenseHeading = () => {
   return (
-    <div style={{display: 'flex', marginBottom: '1vh'}}>
+    <div style={HeadingContainer}>
       <div style={{width:'15%', display:'flex', justifyContent:'center', alignItems:'center'}}>
         <Typography style={{ fontWeight: 600 }} variant='body1'>Date</Typography>
       </div>
@@ -21,6 +21,11 @@ const ExpenseHeading = () => {
       </div>
     </div>
   )
+}
+
+const HeadingContainer = {
+  display: 'flex', 
+  marginBottom: '1vh'
 }
 
 export default ExpenseHeading

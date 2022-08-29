@@ -12,18 +12,20 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import AmountInput from './components/AmountInput';
 
 
 
 
 function App() {
 
-  const [expenseData, setExpenseData] = useState(null);
+  
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
   const [price, setPrice] = useState('');
 
+  // handler events for the 4 inputs
   const handleChangeCategory = ((e) => {
     setCategory(e.target.value);
   });
@@ -36,13 +38,13 @@ function App() {
     setDate(e.target.value);
   });
 
-  // this handler updates the price state/input
   const handleChangePrice = ((e) => {
     setPrice(e.target.value);
   });
     
   
   // database and local storage
+  const [expenseData, setExpenseData] = useState(null);
   const [userId, setUserId] = useState(localStorage.getItem('uuid'));
 
   // check for user, and create
@@ -145,8 +147,8 @@ function App() {
       <div style={{display:'flex', flexDirection:'column', alignItems:'center', borderRadius:'0.4rem', width: '70vw', backgroundColor:'whitesmoke'}}>
         
         <Typography variant='body1'>Add Expenses</Typography>
-
-        <FormControl fullWidth sx={{ width: '60%' }}>
+        <AmountInput priceValue={price} onUpdate={handleChangePrice} />
+        {/* <FormControl fullWidth sx={{ width: '60%' }}>
           <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
           <OutlinedInput
             id="outlined-adornment-amount"
@@ -155,7 +157,7 @@ function App() {
             startAdornment={<InputAdornment position="start">$</InputAdornment>}
             label="Amount"
           />
-        </FormControl>
+        </FormControl> */}
         
         
         
