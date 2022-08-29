@@ -1,4 +1,3 @@
-import React from 'react'
 import { InputLabel, FormControl, OutlinedInput, InputAdornment } from '@mui/material';
 
 const AmountInput = ({ priceValue, onUpdate }) => {

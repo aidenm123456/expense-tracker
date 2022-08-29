@@ -1,4 +1,3 @@
-import React from 'react'
 import { Box, InputLabel, MenuItem, FormControl, Select } from '@mui/material';
 
 const CategoryInput = ({ categoryValue, onUpdate }) => {

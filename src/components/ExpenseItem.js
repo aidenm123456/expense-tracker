@@ -1,4 +1,3 @@
-import React from 'react'
 import { Typography, Button } from '@mui/material';
 
 const ExpenseItem = ({ expenseDate, expenseAmount, expenseCategory, expenseDesc, onRemove }) => {
