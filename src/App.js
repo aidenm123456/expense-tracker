@@ -69,21 +69,21 @@ function App() {
   }
 
   //write database
-  const writeDb = () => {
-    const uuid = uid();
-    set(ref(db, `/${uuid}`), 
-    {
-      amount: price,
-      category: category,
-      description: description,
-      date: date 
-    });
-    // clear inputs
-    setPrice('');
-    setCategory('');
-    setDescription('');
-    setDate('');
-  }
+  // const writeDb = () => {
+  //   const uuid = uid();
+  //   set(ref(db, `/${uuid}`), 
+  //   {
+  //     amount: price,
+  //     category: category,
+  //     description: description,
+  //     date: date 
+  //   });
+  //   // clear inputs
+  //   setPrice('');
+  //   setCategory('');
+  //   setDescription('');
+  //   setDate('');
+  // }
 
   //read database
   const readDb = () => {
@@ -149,20 +149,17 @@ function App() {
 
       {/* Expense Inputs */}
       <div style={{display:'flex', flexDirection:'column', alignItems:'center', borderRadius:'0.4rem', width: '70vw', backgroundColor:'whitesmoke'}}>
-        
         <Typography variant='body1'>Add Expenses</Typography>
         <AmountInput priceValue={price} onUpdate={handleChangePrice} />
         <CategoryInput categoryValue={category} onUpdate={handleChangeCategory} />
         <DescriptionInput descriptionValue={description} onUpdate={handleChangeDescription}/> 
         <DateInput dateValue={date} onUpdate={handleChangeDate} />
         <Button variant="contained" onClick={() => {updateDb()}}>Add Expense</Button>
-
       </div>
 
       {/* expense list */}
       <div style={{display:'flex', width: '80%', alignItems: 'center', justifyContent:'center'}}>
         <div style={{ width: '100%'}}>
-
           <ExpenseHeading />
           {expenseData !== false ? expenseData.map((expense) => {
             return(
