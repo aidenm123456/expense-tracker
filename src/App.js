@@ -117,8 +117,9 @@ function App() {
 
   return (
     <div className="App" style={{height:'100vh', backgroundColor: '#e6e6e6', display:'flex', alignItems:'center', flexDirection:'column'}}>
-      <div>
-        <Typography variant="h4">Expense Tracking Application</Typography>
+      <div style={{display:'flex', flexDirection:'column', alignItems:'center', marginTop:'2.5vh', marginBottom:'2.5vh'}}>
+        <Typography variant="h4">Expense Tracker</Typography>
+        <Typography variant="h6">by: <a style={{textDecoration: 'none', color:'black'}} href="https://github.com/aidenm123456/stocks-dashboard" target='_blank' rel="noreferrer">aidenm123456</a></Typography>
       </div>
 
       {/* Expense Inputs */}
