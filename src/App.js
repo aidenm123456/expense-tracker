@@ -121,7 +121,7 @@ function App() {
       <div style={{display:'flex', flexDirection:'column', alignItems:'center', marginTop:'2.5vh', marginBottom:'2.5vh'}}>
         <Typography variant="h4">Expense Tracker</Typography>
         
-        
+          {/* github outbound link */}
           <a style={{color:'black', textDecoration:'none'}} href="https://github.com/aidenm123456/stocks-dashboard" target='_blank' rel="noreferrer">
             <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
               <BsGithub />
