@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { Typography, Button } from '@mui/material';
 import ExpenseItem from './components/ExpenseItem';
 import ExpenseHeading from './components/ExpenseHeading';
+import { BsGithub } from 'react-icons/bs'; 
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -119,7 +120,16 @@ function App() {
     <div className="App" style={{height:'100vh', backgroundColor: '#e6e6e6', display:'flex', alignItems:'center', flexDirection:'column'}}>
       <div style={{display:'flex', flexDirection:'column', alignItems:'center', marginTop:'2.5vh', marginBottom:'2.5vh'}}>
         <Typography variant="h4">Expense Tracker</Typography>
-        <Typography variant="h6">by: <a style={{textDecoration: 'none', color:'black'}} href="https://github.com/aidenm123456/stocks-dashboard" target='_blank' rel="noreferrer">aidenm123456</a></Typography>
+        
+        
+          <a style={{color:'black'}} href="https://github.com/aidenm123456/stocks-dashboard" target='_blank' rel="noreferrer">
+            <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
+              <BsGithub />
+              <Typography style={{marginLeft:'0.25vw'}}>aidenm123456</Typography>
+            </div>
+          </a>
+        
+        
       </div>
 
       {/* Expense Inputs */}
