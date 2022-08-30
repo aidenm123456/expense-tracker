@@ -2,7 +2,7 @@ import { Box, InputLabel, MenuItem, FormControl, Select } from '@mui/material';
 
 const CategoryInput = ({ categoryValue, onUpdate }) => {
   return (
-    <Box sx={{ width: '60%' }}>
+    <Box sx={{ width: '60%', marginBottom:'1vh' }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Choose Category</InputLabel>
         <Select
