@@ -134,12 +134,12 @@ function App() {
 
       {/* Expense Inputs */}
       <div style={{display:'flex', flexDirection:'column', alignItems:'center', borderRadius:'0.4rem', width: '70vw', backgroundColor:'whitesmoke', boxShadow: '2px 3px 10px grey'}}>
-        <Typography variant='body1'>Add Expenses</Typography>
+        <Typography variant='body1'>Add An Expenses</Typography>
         <AmountInput priceValue={price} onUpdate={handleChangePrice} />
         <CategoryInput categoryValue={category} onUpdate={handleChangeCategory} />
         <DescriptionInput descriptionValue={description} onUpdate={handleChangeDescription}/> 
         <DateInput dateValue={date} onUpdate={handleChangeDate} />
-        <Button variant="contained" onClick={() => {updateDb()}}>Add Expense</Button>
+        <Button sx={{ marginBottom:'2.5vh' }} variant="contained" onClick={() => {updateDb()}}>Add Expense</Button>
       </div>
 
       {/* Expense list */}
