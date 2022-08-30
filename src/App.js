@@ -3,8 +3,7 @@ import { db } from './firebase'
 import { uid } from 'uid';
 import { set, ref, onValue, update, push, child, remove } from 'firebase/database';
 import { useEffect, useState } from 'react';
-import { Typography, Box, InputLabel, MenuItem, FormControl, TextField, OutlinedInput, InputAdornment, Button } from '@mui/material';
-import Select from '@mui/material/Select';
+import { Typography, Button } from '@mui/material';
 import ExpenseItem from './components/ExpenseItem';
 import ExpenseHeading from './components/ExpenseHeading';
 
@@ -101,6 +100,7 @@ function App() {
     setDate('');
   }
 
+  // remove expenses from database 
   const removeDb = (expenseId) => {
     remove(ref(db,'/' + userId + '/' + expenseId));
     readDb();
@@ -116,7 +116,7 @@ function App() {
   }
 
   return (
-    <div className="App" style={{height:'100vh', backgroundColor: 'lightblue', display:'flex', alignItems:'center', flexDirection:'column'}}>
+    <div className="App" style={{height:'100vh', backgroundColor: '#e6e6e6', display:'flex', alignItems:'center', flexDirection:'column'}}>
       <div>
         <Typography variant="h4">Expense Tracking Application</Typography>
       </div>
@@ -131,8 +131,8 @@ function App() {
         <Button variant="contained" onClick={() => {updateDb()}}>Add Expense</Button>
       </div>
 
-      {/* expense list */}
-      <div style={{display:'flex', width: '80%', alignItems: 'center', justifyContent:'center'}}>
+      {/* Expense list */}
+      <div style={{display:'flex', width: '80vw', alignItems: 'center', justifyContent:'center', backgroundColor:'whitesmoke'}}>
         <div style={{ width: '100%'}}>
           <ExpenseHeading />
           {expenseData !== false ? expenseData.map((expense) => {
