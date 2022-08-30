@@ -132,7 +132,7 @@ function App() {
       </div>
 
       {/* Expense list */}
-      <div style={{display:'flex', width: '80vw', alignItems: 'center', justifyContent:'center', backgroundColor:'whitesmoke', boxShadow: '2px 3px 10px grey'}}>
+      <div style={{display:'flex', width: '80vw', alignItems: 'center', borderRadius:'0.4rem', justifyContent:'center', backgroundColor:'whitesmoke', boxShadow: '2px 3px 10px grey'}}>
         <div style={{ width: '100%'}}>
           <ExpenseHeading />
           {expenseData !== false ? expenseData.map((expense) => {
