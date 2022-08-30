@@ -139,7 +139,7 @@ function App() {
         <CategoryInput categoryValue={category} onUpdate={handleChangeCategory} />
         <DescriptionInput descriptionValue={description} onUpdate={handleChangeDescription}/> 
         <DateInput dateValue={date} onUpdate={handleChangeDate} />
-        <Button sx={{ marginBottom:'2.5vh', backgroundColor: 'green' }} variant="contained" onClick={() => {updateDb()}}>Add Expense</Button>
+        <Button sx={{ marginBottom:'2.5vh' }} color='success' variant="contained" onClick={() => {updateDb()}}>Add Expense</Button>
       </div>
 
       {/* Expense list */}

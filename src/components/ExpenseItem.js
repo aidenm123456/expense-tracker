@@ -16,7 +16,7 @@ const ExpenseItem = ({ expenseDate, expenseAmount, expenseCategory, expenseDesc,
         <Typography variant='body1'>{expenseDesc}</Typography>
       </div>
       <div style={{width:'20%', display:'flex', justifyContent:'center', alignItems:'center'}}>
-        <Button variant="contained" onClick={onRemove}>Remove</Button>
+        <Button sx={{backgroundColor:'red'}} variant="contained" onClick={onRemove}>Remove</Button>
       </div>
     </div>
   )
