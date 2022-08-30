@@ -117,7 +117,7 @@ function App() {
   }
 
   return (
-    <div className="App" style={{height:'100%', backgroundColor: '#e6e6e6', display:'flex', alignItems:'center', flexDirection:'column'}}>
+    <div className="App" style={{minHeight:'100vh', backgroundColor: '#e6e6e6', display:'flex', alignItems:'center', flexDirection:'column'}}>
       <div style={{display:'flex', flexDirection:'column', alignItems:'center', marginTop:'2.5vh', marginBottom:'2.5vh'}}>
         <Typography variant="h4">Expense Tracker</Typography>
         
