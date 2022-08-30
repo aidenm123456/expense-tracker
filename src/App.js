@@ -46,14 +46,14 @@ function App() {
   });
     
   
-  // database and local storage
+  // database and local storage area
   const [expenseData, setExpenseData] = useState(null);
   const [userId, setUserId] = useState(localStorage.getItem('uuid'));
 
   // check for user, and create
   const checkUser = () => {
     
-    //userid does not exist in ls -> set ls, state, and databse to userId
+    //userid does not exist in ls -> set ls, state, and databse to userId/uuid
     if (!localStorage.getItem('uuid')) {
       const uuid = uid();
       localStorage.setItem('uuid', uuid);
@@ -61,29 +61,11 @@ function App() {
       set(ref(db, `/${uuid}`), {
         uuid: uuid
       });
-      // console.log('userid was just created')
     }
     else {
-      // console.log('userid already exists')
+      
     }
   }
-
-  //write database
-  // const writeDb = () => {
-  //   const uuid = uid();
-  //   set(ref(db, `/${uuid}`), 
-  //   {
-  //     amount: price,
-  //     category: category,
-  //     description: description,
-  //     date: date 
-  //   });
-  //   // clear inputs
-  //   setPrice('');
-  //   setCategory('');
-  //   setDescription('');
-  //   setDate('');
-  // }
 
   //read database
   const readDb = () => {
@@ -91,32 +73,24 @@ function App() {
     onValue(ref(db), snapshot => {
       const data = snapshot.val();
       if(data !== null) {
-        // console.log(Object.values(data))
-        console.log(Object.values(data)[0])
-        console.log(Object.values(Object.values(data)[0]).slice(0,Object.values(Object.values(data)[0]).length -1))
+        
         if(Object.values(Object.values(data)[0]).length > 1) {
           setExpenseData(Object.values(Object.values(data)[0]).slice(0,Object.values(Object.values(data)[0]).length -1))
         }
         else {
           console.log(Object.values(Object.values(data)[0]))
           setExpenseData(false)
-        }
-        // setExpenseData(Object.values(Object.values(data)[0]).slice(0,Object.values(Object.values(data)[0]).length))
-        // console.log(Object.values(Object.values(data)[0])) // drill down version of data
-        
-        
-        
-        
+        }        
       }
     })
   }
 
+  // add expenses to database
   const updateDb = () => {
 
     const newPostKey = push(child(ref(db), userId)).key;
     const newEntry = { amount: price, category: category, description: description, date: date, delKey: newPostKey }
     
-
     let updates = {};
     updates['/' + userId + '/' + newPostKey] = newEntry;
     update(ref(db), updates);
