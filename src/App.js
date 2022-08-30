@@ -134,7 +134,7 @@ function App() {
 
       {/* Expense Inputs */}
       <div style={{display:'flex', flexDirection:'column', alignItems:'center', borderRadius:'0.4rem', width: '70vw', backgroundColor:'whitesmoke', boxShadow: '2px 3px 10px grey'}}>
-        <Typography variant='body1'>Add An Expenses</Typography>
+        <Typography sx={{marginTop:'2.5vh', marginBottom: '1vh'}} variant='body1'>Add An Expense</Typography>
         <AmountInput priceValue={price} onUpdate={handleChangePrice} />
         <CategoryInput categoryValue={category} onUpdate={handleChangeCategory} />
         <DescriptionInput descriptionValue={description} onUpdate={handleChangeDescription}/> 
