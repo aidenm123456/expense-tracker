@@ -122,7 +122,7 @@ function App() {
       </div>
 
       {/* Expense Inputs */}
-      <div style={{display:'flex', flexDirection:'column', alignItems:'center', borderRadius:'0.4rem', width: '70vw', backgroundColor:'whitesmoke'}}>
+      <div style={{display:'flex', flexDirection:'column', alignItems:'center', borderRadius:'0.4rem', width: '70vw', backgroundColor:'whitesmoke', boxShadow: '2px 3px 10px grey'}}>
         <Typography variant='body1'>Add Expenses</Typography>
         <AmountInput priceValue={price} onUpdate={handleChangePrice} />
         <CategoryInput categoryValue={category} onUpdate={handleChangeCategory} />
@@ -132,7 +132,7 @@ function App() {
       </div>
 
       {/* Expense list */}
-      <div style={{display:'flex', width: '80vw', alignItems: 'center', justifyContent:'center', backgroundColor:'whitesmoke'}}>
+      <div style={{display:'flex', width: '80vw', alignItems: 'center', justifyContent:'center', backgroundColor:'whitesmoke', boxShadow: '2px 3px 10px grey'}}>
         <div style={{ width: '100%'}}>
           <ExpenseHeading />
           {expenseData !== false ? expenseData.map((expense) => {
