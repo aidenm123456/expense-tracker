@@ -139,7 +139,7 @@ function App() {
       </div>
 
       {/* Expense Inputs */}
-      <div style={{display:'flex', flexDirection:'column', alignItems:'center', borderRadius:'0.4rem', width: '70vw', backgroundColor:'whitesmoke', boxShadow: '2px 3px 10px grey'}}>
+      <div style={ExpenseInputs}>
         <Typography sx={{marginTop:'2.5vh', marginBottom: '1vh'}} variant='body1'>Add An Expense</Typography>
         <AmountInput priceValue={price} onUpdate={handleChangePrice} />
         <CategoryInput categoryValue={category} onUpdate={handleChangeCategory} />
@@ -149,7 +149,7 @@ function App() {
       </div>
 
       {/* Expense list */}
-      <div style={{display:'flex', width: '80vw', alignItems: 'center', borderRadius:'0.4rem', justifyContent:'center', backgroundColor:'whitesmoke', boxShadow: '2px 3px 10px grey', marginTop:'2.5vh', marginBottom:'2.5vh', paddingBottom:'1.5vh'}}>
+      <div style={ExpenseList}>
         <div style={{ width: '100%'}}>
           <ExpenseHeading />
           {expenseData !== false ? expenseData.map((expense) => {
@@ -205,6 +205,29 @@ const GithubDiv = {
   display:'flex', 
   justifyContent: 'center', 
   alignItems: 'center'
+}
+
+const ExpenseInputs = {
+  display:'flex', 
+  flexDirection:'column', 
+  alignItems:'center', 
+  borderRadius:'0.4rem', 
+  width: '70vw', 
+  backgroundColor:'whitesmoke', 
+  boxShadow: '2px 3px 10px grey'
+}
+
+const ExpenseList = {
+  display:'flex', 
+  width: '80vw', 
+  alignItems: 'center', 
+  borderRadius:'0.4rem', 
+  justifyContent:'center', 
+  backgroundColor:'whitesmoke', 
+  boxShadow: '2px 3px 10px grey', 
+  marginTop:'2.5vh', 
+  marginBottom:'2.5vh', 
+  paddingBottom:'1.5vh'
 }
 
 export default App;
