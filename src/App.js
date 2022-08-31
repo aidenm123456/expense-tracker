@@ -124,7 +124,7 @@ function App() {
         <Typography variant="h4">Expense Tracker</Typography>
         
           {/* github outbound link */}
-          <a style={{color:'black', textDecoration:'none'}} href="https://github.com/aidenm123456/stocks-dashboard" target='_blank' rel="noreferrer">
+          <a style={{color:'black', textDecoration:'none'}} href="https://github.com/aidenm123456/expense-tracker" target='_blank' rel="noreferrer">
             <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
               <BsGithub />
               <Typography style={{marginLeft:'0.25vw'}}>aidenm123456</Typography>
