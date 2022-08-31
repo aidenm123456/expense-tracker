@@ -114,18 +114,22 @@ function App() {
     },[])
   
   if (expenseData === null) {
-    return(<div style={LoadingGif}><img src={loading} alt="" /></div>)
+    return(
+    <div style={LoadingGif}>
+      <img src={loading} alt="" />
+    </div>
+    )
     
   }
 
   return (
-    <div className="App" style={{minHeight:'100vh', backgroundColor: '#e6e6e6', display:'flex', alignItems:'center', flexDirection:'column'}}>
-      <div style={{display:'flex', flexDirection:'column', alignItems:'center', marginTop:'2.5vh', marginBottom:'2.5vh'}}>
+    <div className="App" style={AppContainer}>
+      <div style={HeaderContainer}>
         <Typography variant="h4">Expense Tracker</Typography>
         
           {/* github outbound link */}
-          <a style={{color:'black', textDecoration:'none'}} href="https://github.com/aidenm123456/expense-tracker" target='_blank' rel="noreferrer">
-            <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
+          <a style={{GithubAnchor}} href="https://github.com/aidenm123456/expense-tracker" target='_blank' rel="noreferrer">
+            <div style={GithubDiv}>
               <BsGithub />
               <Typography style={{marginLeft:'0.25vw'}}>aidenm123456</Typography>
             </div>
@@ -174,6 +178,33 @@ const LoadingGif = {
   display: 'flex', 
   justifyContent:'center', 
   alignItems:'center'
+}
+
+const AppContainer = {
+  minHeight:'100vh', 
+  backgroundColor: '#e6e6e6', 
+  display:'flex', 
+  alignItems:'center', 
+  flexDirection:'column'
+}
+
+const HeaderContainer = {
+  display:'flex', 
+  flexDirection:'column', 
+  alignItems:'center', 
+  marginTop:'2.5vh', 
+  marginBottom:'2.5vh'
+}
+
+const GithubAnchor = {
+  color:'black', 
+  textDecoration:'none'
+}
+
+const GithubDiv = {
+  display:'flex', 
+  justifyContent: 'center', 
+  alignItems: 'center'
 }
 
 export default App;
