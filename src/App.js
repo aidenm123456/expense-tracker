@@ -134,7 +134,9 @@ function App() {
               <Typography style={{marginLeft:'0.25vw'}}>aidenm123456</Typography>
             </div>
           </a>
-        
+      </div>
+
+      <div>
         
       </div>
 

@@ -4,7 +4,7 @@ const DateInput = ({ dateValue, onUpdate }) => {
   return (
     <div style={MainDiv}>
       <Box component="form" sx={{'& > :not(style)': { width: '100%' }}} noValidate autoComplete="off" >
-        <TextField id="outlined-basic" label="YYYY-MM-DD" variant="outlined" value={dateValue} onChange={onUpdate}/>
+        <TextField required id="outlined-basic" label="YYYY-MM-DD" variant="outlined" value={dateValue} onChange={onUpdate}/>
       </Box>
     </div>
   )
