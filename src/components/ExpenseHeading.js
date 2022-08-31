@@ -23,7 +23,8 @@ const ExpenseHeading = () => {
 }
 
 const HeadingContainer = {
-  display: 'flex', 
+  display: 'flex',
+  marginTop: '2.5vh', 
   marginBottom: '1vh'
 }
 

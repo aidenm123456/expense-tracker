@@ -46,7 +46,7 @@ function App() {
   });
     
   
-  // database and local storage area
+  // database and local storage area (CRUD)
   const [expenseData, setExpenseData] = useState(null);
   const [userId, setUserId] = useState(localStorage.getItem('uuid'));
 
@@ -143,7 +143,7 @@ function App() {
       </div>
 
       {/* Expense list */}
-      <div style={{display:'flex', width: '80vw', alignItems: 'center', borderRadius:'0.4rem', justifyContent:'center', backgroundColor:'whitesmoke', boxShadow: '2px 3px 10px grey', marginTop:'2.5vh'}}>
+      <div style={{display:'flex', width: '80vw', alignItems: 'center', borderRadius:'0.4rem', justifyContent:'center', backgroundColor:'whitesmoke', boxShadow: '2px 3px 10px grey', marginTop:'2.5vh', paddingBottom:'1.5vh'}}>
         <div style={{ width: '100%'}}>
           <ExpenseHeading />
           {expenseData !== false ? expenseData.map((expense) => {

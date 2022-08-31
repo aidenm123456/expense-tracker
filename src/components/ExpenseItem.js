@@ -2,7 +2,7 @@ import { Typography, Button } from '@mui/material';
 
 const ExpenseItem = ({ expenseDate, expenseAmount, expenseCategory, expenseDesc, onRemove }) => {
   return (
-    <div style={{display: 'flex'}}>
+    <div style={{display: 'flex', marginBottom: '1vh'}}>
       <div style={{width:'15%', display:'flex', justifyContent:'center', alignItems:'center'}}>
         <Typography variant='body1'>{expenseDate}</Typography>
       </div>
