@@ -89,17 +89,21 @@ function App() {
   // add expenses to database
   const updateDb = () => {
 
-    const newPostKey = push(child(ref(db), userId)).key;
-    const newEntry = { amount: price, category: category, description: description, date: date, delKey: newPostKey }
-    
-    let updates = {};
-    updates['/' + userId + '/' + newPostKey] = newEntry;
-    update(ref(db), updates);
+    if( (/^[0-9.,]+$/.test(price)) && (category.length > 0) && (description.length > 0) ) {
 
-    setPrice('');
-    setCategory('');
-    setDescription('');
-    setDate('');
+      const newPostKey = push(child(ref(db), userId)).key;
+      const newEntry = { amount: price, category: category, description: description, date: date, delKey: newPostKey }
+      
+      let updates = {};
+      updates['/' + userId + '/' + newPostKey] = newEntry;
+      update(ref(db), updates);
+
+      setPrice('');
+      setCategory('');
+      setDescription('');
+      setDate('');
+    }
+    
   }
 
   // remove expenses from database 
@@ -137,7 +141,7 @@ function App() {
       </div>
 
       <div>
-        
+
       </div>
 
       {/* Expense Inputs */}
