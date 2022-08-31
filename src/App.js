@@ -6,7 +6,8 @@ import { useEffect, useState } from 'react';
 import { Typography, Button } from '@mui/material';
 import ExpenseItem from './components/ExpenseItem';
 import ExpenseHeading from './components/ExpenseHeading';
-import { BsGithub } from 'react-icons/bs'; 
+import { BsGithub } from 'react-icons/bs';
+import loading from './assets/bean-eater.gif' 
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -113,7 +114,8 @@ function App() {
     },[])
   
   if (expenseData === null) {
-    return(<p>Loading ...</p>)
+    return(<div style={{width:'100vw', height:'100vh', display: 'flex', justifyContent:'center', alignItems:'center'}}><img src={loading} alt="" /></div>)
+    
   }
 
   return (
@@ -143,7 +145,7 @@ function App() {
       </div>
 
       {/* Expense list */}
-      <div style={{display:'flex', width: '80vw', alignItems: 'center', borderRadius:'0.4rem', justifyContent:'center', backgroundColor:'whitesmoke', boxShadow: '2px 3px 10px grey', marginTop:'2.5vh', paddingBottom:'1.5vh'}}>
+      <div style={{display:'flex', width: '80vw', alignItems: 'center', borderRadius:'0.4rem', justifyContent:'center', backgroundColor:'whitesmoke', boxShadow: '2px 3px 10px grey', marginTop:'2.5vh', marginBottom:'2.5vh', paddingBottom:'1.5vh'}}>
         <div style={{ width: '100%'}}>
           <ExpenseHeading />
           {expenseData !== false ? expenseData.map((expense) => {
@@ -153,7 +155,7 @@ function App() {
                 expenseDate={expense.date} 
                 expenseAmount={expense.amount} 
                 expenseCategory={expense.category} 
-                expenseDesc={expense.description} 
+                expenseDesc={expense.description.slice(0,35)} 
                 onRemove={() => {removeDb(expense.delKey)}}
               />
             )
