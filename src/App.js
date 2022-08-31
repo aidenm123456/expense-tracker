@@ -19,11 +19,8 @@ import DescriptionInput from './components/DescriptionInput';
 import DateInput from './components/DateInput';
 
 
-
-
 function App() {
 
-  
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
@@ -135,7 +132,7 @@ function App() {
         <Typography variant="h4">Expense Tracker</Typography>
         
           {/* github outbound link */}
-          <a style={{GithubAnchor}} href="https://github.com/aidenm123456/expense-tracker" target='_blank' rel="noreferrer">
+          <a style={GithubAnchor} href="https://github.com/aidenm123456/expense-tracker" target='_blank' rel="noreferrer">
             <div style={GithubDiv}>
               <BsGithub />
               <Typography style={{marginLeft:'0.25vw'}}>aidenm123456</Typography>
