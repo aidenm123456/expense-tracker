@@ -155,7 +155,7 @@ function App() {
                 expenseDate={expense.date} 
                 expenseAmount={expense.amount} 
                 expenseCategory={expense.category} 
-                expenseDesc={expense.description.slice(0,35)} 
+                expenseDesc={expense.description.slice(0,30)} 
                 onRemove={() => {removeDb(expense.delKey)}}
               />
             )
