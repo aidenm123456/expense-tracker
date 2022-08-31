@@ -43,7 +43,9 @@ function App() {
   });
 
   const handleChangePrice = ((e) => {
-    setPrice(e.target.value);
+    if(/^[0-9.,]+$/.test(e.target.value) ){
+      setPrice(e.target.value);
+    }
   });
     
   
@@ -89,7 +91,8 @@ function App() {
   // add expenses to database
   const updateDb = () => {
 
-    if( (/^[0-9.,]+$/.test(price)) && (category.length > 0) && (description.length > 0) ) {
+    // check to see that all 4 inputs have at least a length of 1
+    if( (price.length > 0) && (category.length > 0) && (description.length > 0) && (date.length > 0)) {
 
       const newPostKey = push(child(ref(db), userId)).key;
       const newEntry = { amount: price, category: category, description: description, date: date, delKey: newPostKey }
