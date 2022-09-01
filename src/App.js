@@ -73,12 +73,13 @@ function App() {
     onValue(ref(db), snapshot => {
       const data = snapshot.val();
       if(data !== null) {
+
+        // console.log( Object.values(data[userId]) );
         
-        if(Object.values(Object.values(data)[0]).length > 1) {
-          setExpenseData(Object.values(Object.values(data)[0]).slice(0,Object.values(Object.values(data)[0]).length -1))
+        if(Object.values(data[userId]).length > 1) {
+          setExpenseData(Object.values(data[userId]).slice(0,Object.values(data[userId]).length -1))
         }
         else {
-          console.log(Object.values(Object.values(data)[0]))
           setExpenseData(false)
         }        
       }
@@ -113,17 +114,33 @@ function App() {
   }
 
   useEffect(() => {
-    checkUser();
-    readDb();
-    },[])
-  
 
+    const readDb = () => {
+      onValue(ref(db), snapshot => {
+        const data = snapshot.val();
+        if(data !== null) { // console.log( Object.values(data[userId]) );
+          
+          if(Object.values(data[userId]).length > 1) {
+            setExpenseData(Object.values(data[userId]).slice(0,Object.values(data[userId]).length -1))
+          }
+          else {
+            setExpenseData(false)
+          }        
+        }
+      })
+    }
+
+  checkUser();
+  readDb();
+  },[userId])
+  
   if (expenseData === null) {
-    return (
+    return(
     <div style={LoadingGif}>
       <img src={loading} alt="" />
     </div>
     )
+    
   }
 
   return (
@@ -138,6 +155,9 @@ function App() {
               <Typography style={{marginLeft:'0.25vw'}}>aidenm123456</Typography>
             </div>
           </a>
+      </div>
+
+      <div>
 
       </div>
 
